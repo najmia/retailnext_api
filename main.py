@@ -185,13 +185,14 @@ MOCK_INVENTORY = {
     ),
     "ACC-2023-GO-667": InventoryResponse(
         sku="ACC-2023-GO-667",
-        totalStock=68,
+        totalStock=71,
         lastUpdated="2024-01-15T14:45:00Z",
         variants=[
-            Variant(color="Gold", size="One Size", stock=68)
+            Variant(color="Gold", size="One Size", stock=71)
         ],
         storeAvailability=[
-            StoreAvailability(storeId="VIE-001", name="Vienna Store", location="Vienna", inStock=True, stockCount=68)
+            StoreAvailability(storeId="VIE-001", name="Vienna Store", location="Vienna", inStock=True, stockCount=68),
+            StoreAvailability(storeId="MUN-001", name="Munich Store", location="Munich", inStock=True, stockCount=3)
         ]
     )
 }

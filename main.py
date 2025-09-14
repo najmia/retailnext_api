@@ -91,6 +91,71 @@ MOCK_INVENTORY = {
         storeAvailability=[
             StoreAvailability(storeId="INN-001", name="Innsbruck Store", location="Innsbruck", inStock=True, stockCount=12)
         ]
+    ),
+    "D-2025-EM-301": InventoryResponse(
+        sku="D-2025-EM-301",
+        totalStock=45,
+        lastUpdated="2024-01-15T13:00:00Z",
+        variants=[
+            Variant(color="Emerald", size="32", stock=15),
+            Variant(color="Emerald", size="36", stock=18),
+            Variant(color="Emerald", size="40", stock=12)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="MUN-001", name="Munich Store", location="Munich", inStock=True, stockCount=45)
+        ]
+    ),
+    "D-2025-BL-302": InventoryResponse(
+        sku="D-2025-BL-302",
+        totalStock=38,
+        lastUpdated="2024-01-15T13:15:00Z",
+        variants=[
+            Variant(color="Blush", size="34", stock=12),
+            Variant(color="Blush", size="38", stock=16),
+            Variant(color="Blush", size="42", stock=10)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="VIE-001", name="Vienna Store", location="Vienna", inStock=True, stockCount=38)
+        ]
+    ),
+    "D-2025-SB-303": InventoryResponse(
+        sku="D-2025-SB-303",
+        totalStock=52,
+        lastUpdated="2024-01-15T13:30:00Z",
+        variants=[
+            Variant(color="Sapphire Blue", size="32", stock=18),
+            Variant(color="Sapphire Blue", size="36", stock=20),
+            Variant(color="Sapphire Blue", size="40", stock=14)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="MUN-001", name="Munich Store", location="Munich", inStock=True, stockCount=52)
+        ]
+    ),
+    "D-2025-BG-304": InventoryResponse(
+        sku="D-2025-BG-304",
+        totalStock=29,
+        lastUpdated="2024-01-15T13:45:00Z",
+        variants=[
+            Variant(color="Burgundy", size="34", stock=10),
+            Variant(color="Burgundy", size="38", stock=12),
+            Variant(color="Burgundy", size="42", stock=7)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="INN-001", name="Innsbruck Store", location="Innsbruck", inStock=True, stockCount=29)
+        ]
+    ),
+    "D-2025-SG-305": InventoryResponse(
+        sku="D-2025-SG-305",
+        totalStock=41,
+        lastUpdated="2024-01-15T14:00:00Z",
+        variants=[
+            Variant(color="Sage Green", size="32", stock=14),
+            Variant(color="Sage Green", size="36", stock=15),
+            Variant(color="Sage Green", size="40", stock=12)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="VIE-001", name="Vienna Store", location="Vienna", inStock=True, stockCount=41)
+        ]
     )
 }
 

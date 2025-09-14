@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: RetailNext Inventory API
+  description: API for managing and retrieving fashion inventory information.
+  version: 1.0.0
+servers:
+  - url: https://abc123.ngrok.io
+    description: Ngrok Tunnel Server
+paths:
+  /inventory/{sku}:
+    get:
+      operationId: getInventory
+      summary: Get inventory for a specific SKU
+      description: Returns the inventory details for a single product across all stores.
+      parameters:
+        - name: sku
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The SKU of the product to retrieve inventory for.
+        - name: storeId
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Optional filter to retrieve inventory for a specific store.
+      responses:
+        '200':
+          description: Inventory data retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sku:
+                    type: string
+                  totalStock:
+                    type: integer
+                  lastUpdated:
+                    type: string
+                    format: date-time
+                  variants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        color:
+                          type: string
+                        size:
+                          type: string
+                        stock:
+                          type: integer
+                  storeAvailability:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        storeId:
+                          type: string
+                        name:
+                          type: string
+                        location:
+                          type: string
+                        inStock:
+                          type: boolean
+                        stockCount:
+                          type: integer

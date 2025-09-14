@@ -1,0 +1,119 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RetailNext Inventory API",
+    "description": "API for managing and retrieving fashion inventory information.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://abc123.ngrok.io"
+    }
+  ],
+  "paths": {
+    "/inventory/{sku}": {
+      "get": {
+        "operationId": "getInventory",
+        "summary": "Get inventory for a specific SKU",
+        "description": "Returns the inventory details for a single product across all stores.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sku",
+            "required": true,
+            "description": "The SKU of the product to retrieve inventory for.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "storeId",
+            "required": false,
+            "description": "Optional filter to retrieve inventory for a specific store.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inventory data retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventoryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "InventoryResponse": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string"
+          },
+          "totalStock": {
+            "type": "integer"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Variant"
+            }
+          },
+          "storeAvailability": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StoreAvailability"
+            }
+          }
+        }
+      },
+      "Variant": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "stock": {
+            "type": "integer"
+          }
+        }
+      },
+      "StoreAvailability": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "inStock": {
+            "type": "boolean"
+          },
+          "stockCount": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

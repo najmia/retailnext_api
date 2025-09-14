@@ -201,3 +201,20 @@ async def get_inventory(sku: str, storeId: Optional[str] = Query(None)):
         inventory.storeAvailability = filtered_stores
     
     return inventory
+
+@app.get("/stock/{sku}")
+async def get_stock_all_stores(sku: str):
+    if sku not in MOCK_INVENTORY:
+        return {"error": "SKU not found"}
+    
+    inventory = MOCK_INVENTORY[sku]
+    return {
+        "sku": sku,
+        "totalStock": inventory.totalStock,
+        "stores": [{
+            "storeId": store.storeId,
+            "storeName": store.name,
+            "location": store.location,
+            "stock": store.stockCount
+        } for store in inventory.storeAvailability]
+    }

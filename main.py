@@ -156,6 +156,32 @@ MOCK_INVENTORY = {
         storeAvailability=[
             StoreAvailability(storeId="VIE-001", name="Vienna Store", location="Vienna", inStock=True, stockCount=41)
         ]
+    ),
+    "D-2019-GO-849": InventoryResponse(
+        sku="D-2019-GO-849",
+        totalStock=41,
+        lastUpdated="2024-01-15T14:15:00Z",
+        variants=[
+            Variant(color="Gold", size="32", stock=12),
+            Variant(color="Gold", size="36", stock=16),
+            Variant(color="Gold", size="42", stock=13)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="VIE-001", name="Vienna Store", location="Vienna", inStock=True, stockCount=41)
+        ]
+    ),
+    "D-2024-BU-532": InventoryResponse(
+        sku="D-2024-BU-532",
+        totalStock=31,
+        lastUpdated="2024-01-15T14:30:00Z",
+        variants=[
+            Variant(color="Burgundy", size="32", stock=10),
+            Variant(color="Burgundy", size="36", stock=12),
+            Variant(color="Burgundy", size="42", stock=9)
+        ],
+        storeAvailability=[
+            StoreAvailability(storeId="MUN-001", name="Munich Store", location="Munich", inStock=True, stockCount=31)
+        ]
     )
 }
 

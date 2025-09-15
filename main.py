@@ -3,6 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 from typing import Optional, List
 from pydantic import BaseModel
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="RetailNext Inventory API", version="1.0.0")
 
@@ -224,13 +228,26 @@ async def root():
 
 @app.get("/inventory/{sku}", response_model=InventoryResponse)
 async def get_inventory(sku: str, storeId: Optional[str] = Query(None)):
-    if sku not in MOCK_INVENTORY:
+    logger.info(f"GET /inventory/{sku} - storeId: {storeId}")
+    
+    sku_upper = sku.upper()
+    found_sku = None
+    for key in MOCK_INVENTORY.keys():
+        if key.upper() == sku_upper:
+            found_sku = key
+            break
+    
+    if not found_sku:
+        logger.warning(f"SKU not found: {sku}")
         return {"error": "SKU not found"}
     
-    inventory = MOCK_INVENTORY[sku]
+    logger.info(f"Found SKU: {found_sku}")
+    inventory = MOCK_INVENTORY[found_sku]
     
     if storeId:
-        filtered_stores = [store for store in inventory.stores if store.storeId == storeId]
+        storeId_upper = storeId.upper()
+        filtered_stores = [store for store in inventory.stores if store.storeId.upper() == storeId_upper]
+        logger.info(f"Filtered to {len(filtered_stores)} stores for storeId: {storeId}")
         inventory.stores = filtered_stores
         inventory.totalStock = sum(store.totalStock for store in filtered_stores)
     
@@ -238,12 +255,23 @@ async def get_inventory(sku: str, storeId: Optional[str] = Query(None)):
 
 @app.get("/stock/{sku}")
 async def get_stock_all_stores(sku: str):
-    if sku not in MOCK_INVENTORY:
+    logger.info(f"GET /stock/{sku}")
+    
+    sku_upper = sku.upper()
+    found_sku = None
+    for key in MOCK_INVENTORY.keys():
+        if key.upper() == sku_upper:
+            found_sku = key
+            break
+    
+    if not found_sku:
+        logger.warning(f"SKU not found: {sku}")
         return {"error": "SKU not found"}
     
-    inventory = MOCK_INVENTORY[sku]
+    logger.info(f"Found SKU: {found_sku} with {len(MOCK_INVENTORY[found_sku].stores)} stores")
+    inventory = MOCK_INVENTORY[found_sku]
     return {
-        "sku": sku,
+        "sku": inventory.sku,
         "totalStock": inventory.totalStock,
         "stores": [{
             "storeId": store.storeId,

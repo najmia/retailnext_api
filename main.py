@@ -120,6 +120,101 @@ MOCK_INVENTORY = {
                 ]
             )
         ]
+    ),
+    "AC-2023-BU-134": InventoryResponse(
+        sku="AC-2023-BU-134",
+        totalStock=25,
+        lastUpdated="2024-09-14T22:00:00Z",
+        stores=[
+            StoreInventory(
+                storeId="MUN-001",
+                name="Munich Store",
+                location="Munich",
+                totalStock=25,
+                variants=[
+                    StoreVariant(color="Burgundy", size="S", stock=8),
+                    StoreVariant(color="Burgundy", size="M", stock=12),
+                    StoreVariant(color="Burgundy", size="L", stock=5),
+                    StoreVariant(color="Burgundy", size="XL", stock=0)
+                ]
+            )
+        ]
+    ),
+    "AC-2025-MU-356": InventoryResponse(
+        sku="AC-2025-MU-356",
+        totalStock=18,
+        lastUpdated="2024-09-14T22:00:00Z",
+        stores=[
+            StoreInventory(
+                storeId="MUN-001",
+                name="Munich Store",
+                location="Munich",
+                totalStock=18,
+                variants=[
+                    StoreVariant(color="Multicolor", size="S", stock=6),
+                    StoreVariant(color="Multicolor", size="M", stock=0),
+                    StoreVariant(color="Multicolor", size="L", stock=8),
+                    StoreVariant(color="Multicolor", size="XL", stock=4)
+                ]
+            )
+        ]
+    ),
+    "AC-2020-OL-999": InventoryResponse(
+        sku="AC-2020-OL-999",
+        totalStock=22,
+        lastUpdated="2024-09-14T22:00:00Z",
+        stores=[
+            StoreInventory(
+                storeId="MUN-001",
+                name="Munich Store",
+                location="Munich",
+                totalStock=22,
+                variants=[
+                    StoreVariant(color="Olive", size="S", stock=0),
+                    StoreVariant(color="Olive", size="M", stock=10),
+                    StoreVariant(color="Olive", size="L", stock=7),
+                    StoreVariant(color="Olive", size="XL", stock=5)
+                ]
+            )
+        ]
+    ),
+    "AC-2019-NA-229": InventoryResponse(
+        sku="AC-2019-NA-229",
+        totalStock=15,
+        lastUpdated="2024-09-14T22:00:00Z",
+        stores=[
+            StoreInventory(
+                storeId="MUN-001",
+                name="Munich Store",
+                location="Munich",
+                totalStock=15,
+                variants=[
+                    StoreVariant(color="Navy", size="S", stock=4),
+                    StoreVariant(color="Navy", size="M", stock=6),
+                    StoreVariant(color="Navy", size="L", stock=0),
+                    StoreVariant(color="Navy", size="XL", stock=5)
+                ]
+            )
+        ]
+    ),
+    "AC-2019-BL-614": InventoryResponse(
+        sku="AC-2019-BL-614",
+        totalStock=12,
+        lastUpdated="2024-09-14T22:00:00Z",
+        stores=[
+            StoreInventory(
+                storeId="MUN-001",
+                name="Munich Store",
+                location="Munich",
+                totalStock=12,
+                variants=[
+                    StoreVariant(color="Blue", size="S", stock=3),
+                    StoreVariant(color="Blue", size="M", stock=0),
+                    StoreVariant(color="Blue", size="L", stock=6),
+                    StoreVariant(color="Blue", size="XL", stock=3)
+                ]
+            )
+        ]
     )
 }
 
